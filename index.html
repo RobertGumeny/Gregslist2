@@ -1,21 +1,416 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="assets/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
     <title>gregslist2</title>
-</head>
+  </head>
 
-<body>
+  <body class="bg-secondary">
+    <!-- SECTION Header-->
+    <header class="container-fluid py-5 bg-dark text-white">
+      <div class="col-12">
+        <h1><span class="logo px-2">GL</span> Greg's List</h1>
+      </div>
+      <div class="col-12">
+        <a href="#cars" class="text-white">Cars</a>
+        <p class="text-white d-inline">|</p>
+        <a href="#homes" class="text-white">Homes</a>
+        <p class="text-white d-inline">|</p>
+        <a href="#jobs" class="text-white">Jobs</a>
+      </div>
+    </header>
+    <!-- !SECTION End header-->
+    <!-- SECTION Main-->
+    <main class="bg-secondary">
+      <!-- SECTION Cars display area -->
+      <div class="container-fluid py-2">
+        <div class="col-12 pb-1 text-center sub-header" id="cars">
+          <h3>Cars</h3>
+          <button
+            type="button"
+            class="btn btn-sm btn-dark"
+            data-toggle="modal"
+            data-target="#list-car-modal"
+          >
+            List a car
+          </button>
+        </div>
+      </div>
+      <!-- !SECTION End cars display area-->
+      <!-- SECTION Homes display area -->
+      <div class="container-fluid py-2">
+        <div class="col-12 pb-1 text-center sub-header" id="homes">
+          <h3>Homes</h3>
+          <button
+            type="button"
+            class="btn btn-sm btn-dark"
+            data-toggle="modal"
+            data-target="#list-home-modal"
+          >
+            List a home
+          </button>
+        </div>
+      </div>
+      <!-- !SECTION End homes display area-->
+      <!-- SECTION Jobs display area -->
+      <div class="container-fluid py-2">
+        <div class="col-12 pb-1 text-center sub-header" id="jobs">
+          <h3>Jobs</h3>
+          <button
+            type="button"
+            class="btn btn-sm btn-dark"
+            data-toggle="modal"
+            data-target="#list-job-modal"
+          >
+            List a job
+          </button>
+        </div>
+      </div>
+      <!-- !SECTION End jobs display area-->
+    </main>
+    <!-- !SECTION End main-->
+    <footer></footer>
+    <!-- SECTION List car modal-->
+    <div
+      class="modal fade"
+      id="list-car-modal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="modelTitleId"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">List your Car</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form
+              class="container-fluid"
+              onsubmit="app.carController.listCar(event)"
+            >
+              <div class="form-group">
+                <label for="make"></label>
+                <input
+                  type="text"
+                  name="make"
+                  class="form-control"
+                  placeholder="Enter Make here"
+                  required
+                />
+              </div>
 
-    <h1>hello gregslist2</h1>
+              <div class="form-group">
+                <label for="model"></label>
+                <input
+                  type="text"
+                  name="model"
+                  class="form-control"
+                  placeholder="Enter Model here"
+                  required
+                />
+              </div>
 
+              <div class="form-group">
+                <label for="year"></label>
+                <input
+                  type="number"
+                  min="1945"
+                  max="2021"
+                  name="year"
+                  class="form-control"
+                  placeholder="Enter Year here"
+                  required
+                />
+              </div>
 
+              <div class="form-group">
+                <label for="price"></label>
+                <input
+                  type="number"
+                  min="0"
+                  name="price"
+                  class="form-control"
+                  placeholder="Enter Price here"
+                  required
+                />
+              </div>
 
+              <div class="form-group">
+                <label for="description"></label>
+                <textarea
+                  placeholder="Enter description here..."
+                  name="description"
+                  cols="30"
+                  rows="10"
+                  maxlength="250"
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="imgUrl"></label>
+                <input
+                  type="text"
+                  name="imgUrl"
+                  class="form-control"
+                  placeholder="Enter Image Url here..."
+                  required
+                />
+              </div>
+              <button class="btn btn-secondary btn-block" type="submit">
+                List Car
+              </button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <h5>Thanks for using Greg's List!</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- !SECTION End list car modal-->
+    <!-- SECTION List home modal-->
+    <div
+      class="modal fade"
+      id="list-home-modal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="modelTitleId"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">List your Home</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form
+              class="container-fluid"
+              onsubmit="app.homeController.listHome(event)"
+            >
+              <div class="form-group">
+                <label for="location"></label>
+                <input
+                  type="text"
+                  name="location"
+                  class="form-control"
+                  placeholder="Enter Location here"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="beds"></label>
+                <input
+                  type="number"
+                  min="0"
+                  max="20"
+                  name="beds"
+                  class="form-control"
+                  placeholder="Enter # of Bedrooms here"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="baths"></label>
+                <input
+                  type="number"
+                  min="0"
+                  max="20"
+                  name="baths"
+                  class="form-control"
+                  placeholder="Enter # of Bathrooms here"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="sqft"></label>
+                <input
+                  type="number"
+                  min="0"
+                  max="20000"
+                  name="sqft"
+                  class="form-control"
+                  placeholder="Enter Square Footage here"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="acres"></label>
+                <input
+                  type="number"
+                  min="0"
+                  max="20000"
+                  name="acres"
+                  class="form-control"
+                  placeholder="Enter Lot Size here"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="price"></label>
+                <input
+                  type="number"
+                  min="0"
+                  max="25000000"
+                  name="price"
+                  class="form-control"
+                  placeholder="Enter Price here"
+                  required
+                />
+              </div>
+
+              <button class="btn btn-secondary btn-block" type="submit">
+                List Home
+              </button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <h5>Thanks for using Greg's List!</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- !SECTION End list home modal-->
+    <!-- SECTION List job modal-->
+    <div
+      class="modal fade"
+      id="list-job-modal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="modelTitleId"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">List your Job</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form
+              class="container-fluid"
+              onsubmit="app.jobController.listJob(event)"
+            >
+              <div class="form-group">
+                <label for="title"></label>
+                <input
+                  type="text"
+                  name="title"
+                  class="form-control"
+                  placeholder="Enter Job Title here"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="industry"></label>
+                <input
+                  type="text"
+                  name="industry"
+                  class="form-control"
+                  placeholder="Enter Industry here"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="company"></label>
+                <input
+                  type="text"
+                  name="company"
+                  class="form-control"
+                  placeholder="Enter Company Name here"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="salary"></label>
+                <input
+                  type="number"
+                  min="0"
+                  name="salary"
+                  class="form-control"
+                  placeholder="Enter Salary here"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="jobDescription"></label>
+                <textarea
+                  placeholder="Enter description here..."
+                  name="jobDescription"
+                  cols="30"
+                  rows="10"
+                  maxlength="250"
+                ></textarea>
+              </div>
+
+              <button class="btn btn-secondary btn-block" type="submit">
+                List Job
+              </button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <h5>Thanks for using Greg's List!</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- !SECTION End list job modal -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
     <script src="app/main.js" type="module"></script>
-</body>
-
+  </body>
 </html>

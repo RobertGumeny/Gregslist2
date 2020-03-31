@@ -1,1 +1,9 @@
 /* Styles */
+
+.logo {
+  background-color: grey;
+  border-radius: 20%;
+}
+.sub-header {
+  border-bottom: 2px solid black;
+}
